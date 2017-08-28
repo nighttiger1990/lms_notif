@@ -1,0 +1,7 @@
+forever list
+forever restart <id>
+
+Hoac start server:
+cd /var/www/notification-server
+forever start server.js
+

@@ -1,0 +1,28 @@
+{
+    "port": 80,
+    "mongo_url": "localhost/notification-server",
+    "apiwhitelist": [
+        "http://lms.uiux.topica.vn",
+        "http://forum.uiux.topica.vn",
+        "http://elearning.tnu.topica.vn",
+        "http://elearning.tvu.topica.vn",        
+        "http://elearning.vinhuni.topica.vn",
+        "http://forum.tnu.topica.vn",
+		"http://forum.tvu.topica.vn",
+		"http://forum.hou2.topica.vn",
+		"http://elearning.hou2.topica.vn",
+        "http://elearning.neu.topica.vn",
+		"http://forum.vinhuni.topica.vn",
+        "http://forum.neu.topica.vn",
+		"http://teachmeup.vn"
+    ],
+    "socketwhitelist": [
+        "http://lms.uiux.topica.vn",
+        "http://elearning.tnu.topica.vn",
+        "http://elearning.tvu.topica.vn",
+		"http://elearning.hou2.topica.vn",
+        "http://elearning.vinhuni.topica.vn",
+        "http://elearning.neu.topica.vn",
+		"http://teachmeup.vn"
+    ]
+}

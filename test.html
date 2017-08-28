@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>test</title>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="http://notification.topica.vn/js/socket.io.js"></script>
+</head>
+
+<body>
+    <button id="notification" onclick="loadNotification()">0</button>
+    <input id="username" placeholder="username"></input>
+    <input id="system" placeholder="system"></input>
+    <button id="connect" onclick="connectSocket()">Connect</button>
+    <button onclick="create()">Fire</button>
+    <script type="text/javascript">
+    function connectSocket() {
+
+        //connect socket
+        var socket = io('localhost');
+
+        //emit event authentication to server
+        socket.emit("authentication", {
+            "received_user": $("#username").val(), //user name
+            "received_system": $("#system").val() //system domain, skip http
+        });
+
+        //listen to events
+        socket.on("countNotification", function(data) {
+            $("#notification").html(data);
+            console.log('Unviewed: ' + data);
+        });
+        socket.on("newNotification", function(data) {
+            var count = parseInt($("#notification").html());
+            count += 1;
+            $("#notification").html(count);
+            console.log(data);
+        });
+    }
+
+    //call api
+    function loadNotification() {
+        $("#notification").html(0);
+        $.ajax({
+            'url': 'http://localhost/api/notification/browse',
+            'type': 'GET',
+            'data': {
+                'received_system': $("#system").val(), //system domain, skip http
+                'received_user': $("#username").val(), //user name
+                'page': 1, //page
+                'itemPerPage': 10 // item per page
+            },
+            'success': function(response) {
+                console.log(response);
+            }
+        });
+    }
+
+    function create() {
+        var data = [{
+            "send_system": "lms",
+            "send_user": "26624",
+            "received_system": "test",
+            "received_user": "datdh",
+            "action": "like",
+            "notification_content": "hello",
+            "notification_link": "http://www.google.com"
+        }];
+        $.ajax({
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            url: 'http://localhost/api/notification/create',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            'data': JSON.stringify(data),
+            'success': function(response) {
+                console.log(response);
+            }
+        });
+    }
+    </script>
+</body>
+
+</html>

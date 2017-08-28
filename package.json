@@ -1,0 +1,22 @@
+{
+  "name": "notification-server",
+  "version": "1.0.0",
+  "description": "notification server with nodejs and socket.io",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "Dat Dang <datdh@topica.edu.vn>",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^*",
+    "body-parser": "^*",
+    "cors": "^*",
+    "express": "^*",
+    "monk": "^*",
+    "morgan": "^*",
+    "redis":"^*",
+    "socket.io":"^*",
+    "winston": "^*"
+  }
+}
