@@ -1,5 +1,5 @@
 {
-    "port": 80,
+    "port": 3000,
     "mongo_url": "localhost/notification-server",
     "apiwhitelist": [
         "http://lms.uiux.topica.vn",
@@ -24,5 +24,9 @@
         "http://elearning.vinhuni.topica.vn",
         "http://elearning.neu.topica.vn",
 		"http://teachmeup.vn"
-    ]
+    ],
+    "FirebaseConstants": {
+        "KEY": "AIzaSyCzZ4QTI9Tt0671aQM3XRNFUsYQo_XvOlI",
+        "SENDER_ID": "220112882793"
+    }
 }

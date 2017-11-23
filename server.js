@@ -24,7 +24,7 @@ var notification = require(path.join(__dirname, 'modules/notification.js'));
 var apiwhitelist = config.apiwhitelist;
 app.use(require('cors')({
     origin: function(origin, callback) {
-        var originIsWhitelisted = apiwhitelist.indexOf(origin) !== -1;
+        var originIsWhitelisted = apiwhitelist.indexOf(origin)  !== -1;
         // if (originIsWhitelisted)
         callback(null, originIsWhitelisted);
         // else return;

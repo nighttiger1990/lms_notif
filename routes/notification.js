@@ -1,7 +1,12 @@
 var path = require('path');
 var async = require('async');
 var notification = require(path.join(__dirname, '../', 'modules/notification.js'));
+var notification_m = require(path.join(__dirname, '../', 'modules/notification_mobile.js'));
 var requestHandling = require(path.join(__dirname, '../', 'ultilities/requestHandling.js'));
+var fetch = require('node-fetch')
+var FormData = require('form-data')
+// var CORS = require('../ultilities/CORSRequest')
+
 
 module.exports = function(app, io) {
     app.post('/api/notification/create', function(req, res) {
@@ -64,6 +69,7 @@ module.exports = function(app, io) {
                         totalHandleSuccess += 1;
                         if (result.received_user && result.received_system) {
                             io.to(result.received_user + '_' + result.received_system).emit('newNotification', result);
+                            notification_m.send_noti_data_m(result)
                         }
                         return callback(null, null);                      
                     }
